@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormDemo", "WinFormDemo\WinFormDemo.csproj", "{F25575D0-CD25-4234-931A-8E41F0C92EF7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMDIApp", "MyMDIApp\MyMDIApp.csproj", "{CCBE09A9-6475-43AD-BF9F-95E31B092F31}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F25575D0-CD25-4234-931A-8E41F0C92EF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F25575D0-CD25-4234-931A-8E41F0C92EF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F25575D0-CD25-4234-931A-8E41F0C92EF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F25575D0-CD25-4234-931A-8E41F0C92EF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCBE09A9-6475-43AD-BF9F-95E31B092F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCBE09A9-6475-43AD-BF9F-95E31B092F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCBE09A9-6475-43AD-BF9F-95E31B092F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCBE09A9-6475-43AD-BF9F-95E31B092F31}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {806C35C3-A530-495D-B23E-81F4EDA0E352}
+	EndGlobalSection
+EndGlobal
