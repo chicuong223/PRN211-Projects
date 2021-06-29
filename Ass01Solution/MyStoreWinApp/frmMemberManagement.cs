@@ -46,10 +46,9 @@ namespace MyStoreWinApp
         {
             try
             {
-                source = new BindingSource();
                 if(login.MemberID != 0)
                 {
-                    source.DataSource = Repository.GetMemberByID(login.MemberID);
+                    dgvMemberList.DataSource = Repository.GetMemberByID(login.MemberID);
                 }
                 else
                 {
@@ -62,10 +61,10 @@ namespace MyStoreWinApp
                     {
                         btnDelete.Enabled = true;
                     }
-                    source.DataSource = memberLst;
+                    dgvMemberList.DataSource = null;
+                    dgvMemberList.DataSource = memberLst;
                 }
-                dgvMemberList.DataSource = null;
-                dgvMemberList.DataSource = source;
+
             }
             catch (Exception ex)
             {
@@ -115,7 +114,24 @@ namespace MyStoreWinApp
 
         private void FilterCountry()
         {
-            source.DataSource = Repository.FilterMembersByCountry(cboCountries.Text);
+            //source.DataSource = Repository.FilterMembersByCountry(cboCountries.Text);
+            source = new BindingSource();
+            foreach(DataGridViewRow row in dgvMemberList.Rows)
+            {
+                if (row.Cells[5].Value.ToString().ToUpper().Contains(cboCountries.Text.ToUpper()))
+                {
+                    row.Selected = true;
+                    row.Visible = true;
+                }
+                else
+                {
+                    CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[dgvMemberList.DataSource];
+                    currencyManager1.SuspendBinding();
+                    row.Selected = false;
+                    row.Visible = false;
+                    currencyManager1.ResumeBinding();
+                }
+            }
         }
 
         private void AddCountriesToCbo()

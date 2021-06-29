@@ -107,10 +107,6 @@ namespace DataAccess
 
         public MemberObject CheckLogin(string email, string password)
         {
-            //var config = new ConfigurationBuilder()
-            //            .SetBasePath(Directory.GetCurrentDirectory())
-            //            .AddJsonFile("appsettings.json", true, true)
-            //            .Build();
             using StreamReader sr = new StreamReader("appsettings.json");
             var details = JObject.Parse(sr.ReadToEnd());
             string AdminEmail = (string)details["admin"]["email"];

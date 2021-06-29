@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "TempDataDemo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>TempDataDemo</h1>
+<ul>
+    @foreach(var data in TempData["StudentData"] as List<string>) { 
+        <li>@data</li>
+    }
+</ul>
+

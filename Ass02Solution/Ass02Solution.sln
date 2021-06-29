@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessObjects", "BusinessObjects\BusinessObjects.csproj", "{D8DEEAC2-1FCD-4BC1-8C4E-F4DFA8FD0AD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessObjects", "BusinessObjects\BusinessObjects.csproj", "{D8DEEAC2-1FCD-4BC1-8C4E-F4DFA8FD0AD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{A28CC7A5-5E9C-462A-9D55-87BE39B7F488}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{A28CC7A5-5E9C-462A-9D55-87BE39B7F488}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesWinApp", "SalesWinApp\SalesWinApp.csproj", "{35A3ACB2-285B-45F7-AE4C-EF225F9DB85B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesWinApp", "SalesWinApp\SalesWinApp.csproj", "{35A3ACB2-285B-45F7-AE4C-EF225F9DB85B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +27,10 @@ Global
 		{35A3ACB2-285B-45F7-AE4C-EF225F9DB85B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35A3ACB2-285B-45F7-AE4C-EF225F9DB85B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35A3ACB2-285B-45F7-AE4C-EF225F9DB85B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D94DA40D-73C1-4B23-BF9E-D67D0E0FF570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94DA40D-73C1-4B23-BF9E-D67D0E0FF570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94DA40D-73C1-4B23-BF9E-D67D0E0FF570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94DA40D-73C1-4B23-BF9E-D67D0E0FF570}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
