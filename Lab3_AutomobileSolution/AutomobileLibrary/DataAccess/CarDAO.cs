@@ -57,6 +57,7 @@ namespace AutomobileLibrary.DataAccess
         //-----------------------------------------------------------------------------------------------
         public bool AddNew(Car car)
         {
+            bool result = false;
             try
             {
                 Car _car = GetCarByID(car.CarId);
@@ -65,7 +66,7 @@ namespace AutomobileLibrary.DataAccess
                     using var context = new MyStockContext();
                     context.Cars.Add(car);
                     context.SaveChanges();
-                    return true;
+                    result = true;
                 }
                 else
                 {
@@ -76,7 +77,57 @@ namespace AutomobileLibrary.DataAccess
             {
                 throw new Exception(ex.Message);
             }
-            return false;
+            return result;
+        }
+        //----------------------------------------------------------------------------------------------
+        public bool Update(Car car)
+        {
+            bool result = false;
+            try
+            {
+                Car _car = GetCarByID(car.CarId);
+                if(_car != null)
+                {
+                    using var context = new MyStockContext();
+                    context.Cars.Update(car);
+                    context.SaveChanges();
+                    result = true;
+                }
+                else
+                {
+                    throw new Exception("This car does not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
+        }
+        //--------------------------------------------------------------------------------------------------------------------
+        public bool Delete(Car car)
+        {
+            bool result = false;
+            try
+            {
+                Car _car = GetCarByID(car.CarId);
+                if (_car != null)
+                {
+                    using var context = new MyStockContext();
+                    context.Cars.Remove(car);
+                    context.SaveChanges();
+                    result = true;
+                }
+                else
+                {
+                    throw new Exception("This car does not exist.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return result;
         }
     }
 }
