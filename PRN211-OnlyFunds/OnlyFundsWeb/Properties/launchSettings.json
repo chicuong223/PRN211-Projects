@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:33095",
+      "applicationUrl": "http://localhost:41660",
       "sslPort": 0
     }
   },
@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PRN211_OnlyFunds": {
+    "OnlyFundsWeb": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
