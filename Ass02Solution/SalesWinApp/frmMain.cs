@@ -88,18 +88,7 @@ namespace SalesWinApp
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            menuStrip1.Enabled = false;
-            if(Login() == true)
-            {
-                menuStrip1.Enabled = true;
-            }
-            if(member.MemberId != 0)
-            {
-                addMemberToolStripMenuItem.Enabled = false;
-                productToolStripMenuItem.Enabled = false;
-                manageToolStripMenuItem.Enabled = false;
-                viewSalesReportToolStripMenuItem.Enabled = false;
-            }
+            LoadForm();
         }
 
         private bool Login()
@@ -139,8 +128,28 @@ namespace SalesWinApp
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             member = null;
+            LoadForm();
+        }
+
+        private void LoadForm(){
             menuStrip1.Enabled = false;
-            Login();
+            if(Login() == true)
+            {
+                menuStrip1.Enabled = true;
+            }
+            if(!member.Email.Equals("admin@fstore.com"))
+            {
+                addMemberToolStripMenuItem.Enabled = false;
+                productToolStripMenuItem.Enabled = false;
+                manageToolStripMenuItem.Enabled = false;
+                viewSalesReportToolStripMenuItem.Enabled = false;
+            }
+            else{
+                addMemberToolStripMenuItem.Enabled = true;
+                productToolStripMenuItem.Enabled = true;
+                manageToolStripMenuItem.Enabled = true;
+                viewSalesReportToolStripMenuItem.Enabled = true;
+            }
         }
     }
 }

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<BusinessObjects.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Product List</h1>
+@{
+    if (ViewBag.Error != null)
+    {
+        <h2 class="text-danger">@ViewBag.Error</h2>
+    }
+    else
+    {
+        <div id="search">
+            <span>Search</span>
+            <input type="text" id="searchBox" />
+        </div>
+        <p>
+            <a asp-action="Create">Add new Product</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CategoryId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Weight)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UnitPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UnitsInStock)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CategoryId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Weight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnitPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UnitsInStock)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal-@item.ProductId">Delete</a>
+                            <div class="modal" tabindex="-1" id="modal-@item.ProductId">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">Delete Product</div>
+                                        <div class="modal-body">
+                                            <form asp-action="Delete" asp-route-id="@item.ProductId" id="form-@item.ProductId">
+                                                <p>This action will delete this product and all order details that contain this product</p>
+                                                <p>Continue?</p>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-danger" type="submit" form="form-@item.ProductId">Delete</button>
+                                            <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <script defer>
+            var tbody = document.querySelector("tbody");
+            var rows = tbody.children;
+            const searchBox = document.getElementById("searchBox");
+            searchBox.addEventListener('input', () => {
+                for (let i = 0; i < rows.length; i++) {
+                    if (rows[i].children[1].textContent.trim().toLowerCase().includes(searchBox.value.trim().toLowerCase()))
+                        rows[i].style.display = "table-row";
+                    else
+                        rows[i].style.display = "none";
+                }
+            });
+        </script>
+    }
+}
+

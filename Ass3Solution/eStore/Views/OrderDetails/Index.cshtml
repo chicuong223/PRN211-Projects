@@ -1,0 +1,64 @@
+﻿@using DataAccess.Repository;
+@using BusinessObjects;
+
+
+@model IEnumerable<BusinessObjects.OrderDetail>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Order Details</h1>
+
+@if (ViewBag.User == 1)
+{
+    <p>
+        <a asp-action="Create" asp-route-id="@ViewData["OrderID"]">Add a Product</a>
+    </p>
+}
+@{
+    ProductRepository productRepository = new ProductRepository();
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @{
+                        Product pro = productRepository.GetProductByID(item.ProductId);
+                    }
+                    @pro.ProductName
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Details" asp-controller="Order" asp-route-id="@ViewData["OrderId"]">Back</a>
