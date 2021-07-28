@@ -13,9 +13,25 @@
     }
     else
     {
-        <div id="search">
-            <span>Search</span>
-            <input type="text" id="searchBox" />
+        <div id="search" class='row'>
+            <div class='col'>
+                <span>Product name</span>
+                <input type="text" id="search-box" />
+            </div>
+            <div class='col'>
+                <span>Price Range</span>
+                <select id='price-range'>
+                    <option value=''>-- All --</option>
+                    <option value='0-100'>$0-$100</option>
+                    <option value='100-200'>$100-$200</option>
+                    <option value='200-300'>$200-$300</option>
+                    <option value='300-400'>$300-$400</option>
+                    <option value='400-500'>$400-$500</option>
+                </select>
+            </div>
+            <div class='col'>
+                <button type="button" id="btn-search" class='btn btn-warning'>Search</button>
+            </div>
         </div>
         <p>
             <a asp-action="Create">Add new Product</a>
@@ -89,10 +105,24 @@
         <script defer>
             var tbody = document.querySelector("tbody");
             var rows = tbody.children;
-            const searchBox = document.getElementById("searchBox");
-            searchBox.addEventListener('input', () => {
+            const searchBox = document.getElementById("search-box");
+            const priceRange = document.getElementById('price-range');
+            btnSearch = document.getElementById("btn-search");
+            function findNumBetween(x) {
+                if (priceRange.value === '')
+                    return true;
+                let arr = priceRange.value.split('-')
+                console.log(arr);
+                let start = arr[0];
+                console.log(start);
+                let end = arr[1];
+                console.log(end);
+                return start <= x && end >= x;
+            }
+            btnSearch.addEventListener('click', () => {
                 for (let i = 0; i < rows.length; i++) {
-                    if (rows[i].children[1].textContent.trim().toLowerCase().includes(searchBox.value.trim().toLowerCase()))
+                    let price = parseInt(rows[i].children[3].textContent);
+                    if (rows[i].children[1].textContent.trim().toLowerCase().includes(searchBox.value.trim().toLowerCase()) && findNumBetween(price) === true)
                         rows[i].style.display = "table-row";
                     else
                         rows[i].style.display = "none";

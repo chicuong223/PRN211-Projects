@@ -20,9 +20,9 @@ namespace eStore.Controllers
             int loggedIn = CheckLogin();
             if (loggedIn == -1)
                 return RedirectToAction("Login", "Home");
-            if (loggedIn == 0)
+            if(HttpContext.Session.GetInt32("user").Value != id)
             {
-                ViewBag.Error = "You don't have access to this action";
+                ViewBag.Error = "You can not view info of other members";
                 return View();
             }
             try
@@ -79,6 +79,11 @@ namespace eStore.Controllers
             int loggedIn = CheckLogin();
             if (loggedIn == -1)
                 return RedirectToAction("Login", "Home");
+            if (HttpContext.Session.GetInt32("user").Value != id)
+            {
+                ViewBag.Error = "You can not view info of other members";
+                return View();
+            }
             Member member = memberRepository.GetMemberByID(id);
             return View(member);
         }
